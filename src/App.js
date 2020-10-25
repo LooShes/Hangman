@@ -26,12 +26,15 @@ class App extends Component {
     return letters
   }
 
-  selectLetter = (letter, dir) => {
+  selectLetter = (letter) => {
     let status = {...this.state.letterStatus}
     status[letter] = true
 
-    this.setState({letterStatus: status})
-    dir === "up" ? this.setState({score: this.state.score + 5}) : this.setState({score: this.state.score - 20})
+    this.setState({letterStatus: status}, function(){
+      this.state.solution.word.indexOf(letter) ? this.setState({score: this.state.score-20}) : this.setState({score: this.state.score+5})
+    })
+    
+    //dir === "up" ? this.setState({score: this.state.score + 5}) : this.setState({score: this.state.score - 20})
   }
 
   render() {
