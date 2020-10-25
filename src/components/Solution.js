@@ -10,7 +10,7 @@ class Solution extends Component {
             return this.props.letters[l] ? solution.push(l) : solution.push('__ ')
          })}
         
-         return solution
+        return solution
     }
 
     render() {

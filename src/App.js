@@ -3,6 +3,7 @@ import './App.css';
 import Solution from './components/Solution';
 import Score from './components/Score';
 import Letters from './components/Letters';
+import EndGame from './components/EndGame';
 
 class App extends Component {
   constructor(){
@@ -33,8 +34,15 @@ class App extends Component {
     this.setState({letterStatus: status}, function(){
       (this.state.solution.word.indexOf(letter) >= 0) ? this.setState({score: this.state.score+5}) : this.setState({score: this.state.score-20})
     })
-    
-    //dir === "up" ? this.setState({score: this.state.score + 5}) : this.setState({score: this.state.score - 20})
+  }
+
+  endGame = (letter) => {
+    for(let letter of this.state.solution.word){
+      if(!this.state.letterStatus[letter]){
+        return false
+      }
+    }
+   return  this.state.score>0 ? true : false
   }
 
   render() {
@@ -43,6 +51,7 @@ class App extends Component {
           <Score score={this.state.score} />
           <Solution solution={this.state.solution} letters={this.state.letterStatus}  />
           <Letters selectLetter={this.selectLetter} letters={this.state.letterStatus} />
+          {this.endGame() ? <EndGame word={this.state.solution.word} /> : <EndGame />}
       </div>
     )
   }
