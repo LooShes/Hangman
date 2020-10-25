@@ -59,7 +59,7 @@ class App extends Component {
       <div>
           <Score score={this.state.score}/>
           <Solution solution={this.state.solution} letters={this.state.letterStatus} />
-          <Letters letters={Object.keys(this.state.letterStatus)}/>
+          <Letters letters={this.state.letterStatus} />
       </div>
     )
   }

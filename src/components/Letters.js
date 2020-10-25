@@ -3,15 +3,17 @@ import Letter from './Letter'
 
 class Letters extends Component {
     render() {
+        let letters = Object.keys(this.props.letters)
+
         return (
             <div>
                 <div>Available Letters</div>
-                {this.props.letters.map(l => {
-                    return <Letter letters={l}/>
+                {letters.map(l => {
+                    return this.props.letters[l] ? <span className={this.props.letters[l]} style={{textDecoration: "line-through"}}><Letter letters={l} /></span> : <span className={this.props.letters[l]}><Letter letters={l}/></span>
                 })}
             </div>
         );
     }
 }
 
-export default Letters;
+export default Letters
