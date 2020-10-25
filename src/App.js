@@ -8,39 +8,12 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      letterStatus: {
-        A: false,
-        B: false,
-        C: false,
-        D: false,
-        E: true,
-        F: false,
-        G: false,
-        H: false,
-        I: false,
-        J: false,
-        K: false,
-        L: false,
-        M: false,
-        N: false,
-        O: false,
-        P: false,
-        Q: false,
-        R: false,
-        S: true,
-        T: false,
-        U: false,
-        V: false,
-        W: false,
-        X: false,
-        Y: true,
-        Z: false
-      },
+      letterStatus: this.generateLetterStatuses(),
       solution: {
         hint: 'hint',
         word: 'BYTES'
       },
-      score: 0
+      score: 100
     }
   }
 
@@ -53,13 +26,20 @@ class App extends Component {
     return letters
   }
 
+  selectLetter = letter => {
+    let status = {...this.state.letterStatus}
+    status[letter] = true
+
+    this.setState({letterStatus: status})
+  }
+
   render() {
     console.log(this.state.letterStatus)
     return (
       <div>
           <Score score={this.state.score}/>
           <Solution solution={this.state.solution} letters={this.state.letterStatus} />
-          <Letters letters={this.state.letterStatus} />
+          <Letters selectLetter={this.selectLetter} letters={this.state.letterStatus} />
       </div>
     )
   }
