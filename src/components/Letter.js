@@ -10,4 +10,4 @@ class Letter extends Component {
     }
 }
 
-export default Letter;
+export default Letter

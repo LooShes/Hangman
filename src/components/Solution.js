@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import Letter from './Letter'
 
 class Solution extends Component {
-    render() {
-        let emptySpaces = ['__', '__', '__', '__']
+    createSolution = () => {
+        let solution = []
+        {[...this.props.solution.word].map(l => { console.log(this.props.letters["b"])
+            return this.props.letters[l] ? solution.push(l) : solution.push('__ ')
+         })}
+         return solution
+    }
 
+    render() {
+        console.log(this.createSolution())
         return (
             <div>
-                <div>Your ideal mood when coding</div>
-                {emptySpaces.map((e, i) => { 
-                    return <span key={i}>{e}  </span> 
-                })}
-                {[...this.props.solution.word].map(l => {
-                    return <Letter letters={l} />
-                })}
                 <div>{this.props.solution.hint}</div>
+                {Object.entries(this.props.letters).forEach(([key, value]) => {
+	                // <Letter letters={l} /> 
+                })}
             </div>
         );
     }
