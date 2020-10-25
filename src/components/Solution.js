@@ -7,7 +7,7 @@ class Solution extends Component {
         let direction = 'down'
 
         {[...this.props.solution.word].map(l => {
-            return this.props.letters[l] ? solution.push(l) : solution.push('__ ')
+            return this.props.letters[l] ? solution.push(l) : solution.push('_ ')
          })}
         
         return solution
@@ -18,7 +18,7 @@ class Solution extends Component {
 
         return (
             <div>
-                <div>{this.props.solution.hint}</div>
+                <div style={{fontFamily: 'Carter One'}}>{this.props.solution.hint}</div>
                 {solution.map(elem => {
 	                return <Letter letters={elem} /> 
                 })}

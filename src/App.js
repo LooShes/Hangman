@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import pic from './img/hangman.PNG'
 import Solution from './components/Solution';
 import Score from './components/Score';
 import Letters from './components/Letters';
@@ -11,8 +12,8 @@ class App extends Component {
     this.state = {
       letterStatus: this.generateLetterStatuses(),
       solution: {
-        hint: 'hint',
-        word: 'BYTES'
+        hint: 'Best mood when coding',
+        word: 'CALM'
       },
       score: 100
     }
@@ -47,11 +48,14 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
+        <header className="App-header">
+          <img src={pic} alt="hangman.png" className="App-logo" style={{}} /><br/>
           <Score score={this.state.score} />
           <Solution solution={this.state.solution} letters={this.state.letterStatus}  />
           <Letters selectLetter={this.selectLetter} letters={this.state.letterStatus} />
           {this.endGame() ? <EndGame word={this.state.solution.word} /> : <EndGame />}
+        </header>
       </div>
     )
   }

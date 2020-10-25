@@ -7,8 +7,8 @@ class Letter extends Component {
 
     render() {
         return (
-            <span onClick={this.selectLetter}>
-                {this.props.letters}
+            <span style={{fontFamily: 'Architects Daughter'}} onClick={this.selectLetter}>
+                {this.props.letters}<span> </span>
             </span>
         )
     }
