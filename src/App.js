@@ -15,7 +15,8 @@ class App extends Component {
         hint: 'Best mood when coding',
         word: 'CALM'
       },
-      score: 100
+      score: 100,
+      gameNumber: 0
     }
   }
 
@@ -46,6 +47,14 @@ class App extends Component {
    return  this.state.score>0 ? true : false
   }
 
+  restartGame = (hint, word) => {
+    //let games = ["", {hint:"City in Israel", word:"Haifa"}]
+    //this.setState({gameNumber: this.state.gameNumber+1}, function(){
+      this.setState({solution: {hint, word}})
+    //})
+
+  }
+
   render() {
     return (
       <div className="App">
@@ -54,7 +63,7 @@ class App extends Component {
           <Score score={this.state.score} />
           <Solution solution={this.state.solution} letters={this.state.letterStatus}  />
           <Letters selectLetter={this.selectLetter} letters={this.state.letterStatus} />
-          {this.endGame() ? <EndGame word={this.state.solution.word} /> : <EndGame />}
+          {this.endGame() ? <EndGame word={this.state.solution.word} restartGame={this.restartGame} /> : <EndGame restartGame={this.restartGame} />}
         </header>
       </div>
     )

@@ -7,10 +7,15 @@ class EndGame extends Component {
         borderRadius: '5px' 
     }
 
+    restartGame = () => {
+        this.props.restartGame("City in Israel", "HAIFA")
+    }
+
     render() {
         return (
             <div>
-                {this.props.word ? <span style={this.divStyle}>You Win!!!</span> : <div style={this.divStyle}>You are Looser</div>}
+                {this.props.word ? <span style={this.divStyle}>You Won!!!</span> : <div style={this.divStyle}>You are a Loser</div>}
+                <button onClick={this.restartGame}>Restart</button>
             </div>
         );
     }
