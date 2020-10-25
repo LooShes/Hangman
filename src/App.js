@@ -31,7 +31,7 @@ class App extends Component {
     status[letter] = true
 
     this.setState({letterStatus: status}, function(){
-      this.state.solution.word.indexOf(letter) ? this.setState({score: this.state.score-20}) : this.setState({score: this.state.score+5})
+      (this.state.solution.word.indexOf(letter) >= 0) ? this.setState({score: this.state.score+5}) : this.setState({score: this.state.score-20})
     })
     
     //dir === "up" ? this.setState({score: this.state.score + 5}) : this.setState({score: this.state.score - 20})
