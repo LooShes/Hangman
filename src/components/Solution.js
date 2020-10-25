@@ -4,9 +4,12 @@ import Letter from './Letter'
 class Solution extends Component {
     createSolution = () => {
         let solution = []
+        let direction = 'down'
+
         {[...this.props.solution.word].map(l => {
             return this.props.letters[l] ? solution.push(l) : solution.push('__ ')
          })}
+        
          return solution
     }
 

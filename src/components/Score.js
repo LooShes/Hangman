@@ -6,7 +6,7 @@ class Score extends Component {
             <div>
                 {this.props.score}
             </div>
-        );
+        )
     }
 }
 
