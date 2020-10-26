@@ -12,11 +12,11 @@ class App extends Component {
     this.state = {
       letterStatus: this.generateLetterStatuses(),
       solution: {
-        hint: 'Best mood when coding',
-        word: 'CALM'
+        hint: "3*10^8 m/s",
+        word: "SPEED OF LIGHT"
       },
       score: 100,
-      gameNumber: 0
+      gameNumber: -1
     }
   }
 
@@ -47,15 +47,18 @@ class App extends Component {
    return  this.state.score>0 ? true : false
   }
 
-  restartGame = (hint, word) => {
-    //let games = ["", {hint:"City in Israel", word:"Haifa"}]
-    //this.setState({gameNumber: this.state.gameNumber+1}, function(){
-      this.setState({solution: {hint, word}})
-    //})
+  restartGame = () => {
+    const hints = ["City in Israel", "Something", 'Best mood when coding']
+    const words = ["HAIFA", "ANYTHING", 'CALM']
 
+    this.setState({gameNumber: this.state.gameNumber+1}, function(){
+      this.setState({solution: {hint: hints[this.state.gameNumber], word: words[this.state.gameNumber]}})
+      this.setState({letterStatus: this.generateLetterStatuses()})
+    })
   }
 
   render() {
+    console.log(this.endGame())
     return (
       <div className="App">
         <header className="App-header">

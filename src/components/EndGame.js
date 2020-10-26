@@ -8,7 +8,7 @@ class EndGame extends Component {
     }
 
     restartGame = () => {
-        this.props.restartGame("City in Israel", "HAIFA")
+        this.props.restartGame()   
     }
 
     render() {
